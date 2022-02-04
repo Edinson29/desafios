@@ -1,2 +1,39 @@
-<h1>Challenges#index</h1>
-<p>Find me in app/views/challenges/index.html.erb</p>
+<div class="row">
+    <div class="col-1"></div>
+    <div class="col">
+        <h3 class="text-primary">Desafios</h3>
+    </div>
+</div>
+<div class="row mt-5 mx-auto">
+	<% @challenges.each do |ch|%>
+        <div class="col d-flex justify-content-evenly">
+            <div class="card mx-3">
+                <div class="card-title mt-3">
+                    <h5 class="card-title text-subtitle px-3"><%= ch.title %></h5>
+                    <h6 class="card-subtitle my-2 px-3
+                        <% if ch.Aprobado? %>text-light-blue<%end%>
+                        <% if ch.Rechazado? %>text-danger<%end%>
+                        <% if ch.Pendiente? %>text-warning<%end%>
+                        <% if ch.Expirado? %>text-secondary<%end%>
+                        ">
+                        
+                        <%= ch.challenge_time%> Hora(s) / <%= ch.points %>pts</h6>
+                </div>
+                <div class="card-body position-absolute bottom-0 start-0">
+                    <% if ch.Aprobado? %>
+                        <%= link_to ch.state, info_aprobado_path, class: 'btn btn-light-blue', data_bs_toggle: 'modal', data_bs_target: '#exampleModal' %>
+                    <%end%>
+                    <% if ch.Rechazado? %>
+                        <%= link_to ch.state, info_rechazado_id_path(ch), class: 'btn btn-danger' %>
+                    <%end%>
+                    <% if ch.Pendiente? %>
+                        <%= link_to ch.state, info_pendiente_id_path(ch), class: 'btn btn-warning', data_bs_toggle: 'modal', data_bs_target: '#exampleModal' %>
+                    <%end%>
+                    <% if ch.Expirado? %>
+                        <%= link_to ch.state, info_expirado_id_path(ch), class: 'btn btn-secondary', data_bs_toggle: 'modal', data_bs_target: '#exampleModal' %>
+                    <%end%>
+                </div>
+            </div>
+		</div>
+	<% end %>
+</div>

@@ -10,16 +10,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_04_041906) do
+ActiveRecord::Schema.define(version: 2022_02_04_072926) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "challenges", force: :cascade do |t|
     t.string "title"
-    t.string "description"
+    t.string "description_challenge"
+    t.string "description_user"
+    t.string "description_teeacher"
+    t.date "dateline"
+    t.float "challenge_time"
+    t.integer "points"
+    t.integer "state"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_challenges_on_user_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "challenges", "users"
 end

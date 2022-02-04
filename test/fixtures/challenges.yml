@@ -1,9 +1,19 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  title: MyString
-  description: MyString
+  description_user: MyString
+  description_teeacher: MyString
+  dateline: 2022-02-04
+  challenge_time: 1.5
+  points: 1
+  state: 1
+  user: one
 
 two:
-  title: MyString
-  description: MyString
+  description_user: MyString
+  description_teeacher: MyString
+  dateline: 2022-02-04
+  challenge_time: 1.5
+  points: 1
+  state: 1
+  user: two
